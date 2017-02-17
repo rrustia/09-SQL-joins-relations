@@ -13,10 +13,6 @@ Your lab TODOs today will require you to write SQL queries and add associated da
   * To do so, start postgres in the terminal using the `psql` command
   * Once you're in the postgres shell, enter `DROP TABLE articles;` to remove the table from your local DB
   * Leave the shell open so you can check on your new tables in the upcoming setup steps!
-3. In a new terminal window, run the following command from the starter code dir: `bin/loadarticles`
-  * This command is a local executable in the `bin/` directory (feel free to read the code, but do not get hung up on it if you don't know what's going on...)
-  * It will create a connection with your local postgres db, read the contents of hackerIpsum.json, and then load authors into an `authors` table, and articles into an `articles` table with a reference to the author of each article (using the foreign key)
-  * This executable also relies on the `loadDB.js` file in the `lib/` directory (feel free to read the code!).
 4. In your postgres shell:
   * Run `select count(*) from articles;`
     * The output should read that you now have 250 records in the articles table.
