@@ -9,7 +9,7 @@ const app = express();
 // DONE: Don't forget to set your own conString if required by your system
 const conString = 'postgres://localhost:5432';
 // DONE: Using a sentence or two, describe what is happening in Line 12.
-// Put your response here...It is creating a new server connection that can connect through port 5432
+// Put your response here...It is creating a new server connection that can connect through port 5432, which is a connection between controller and model.
 const client = new pg.Client(conString);
 client.connect();
 
@@ -53,10 +53,10 @@ app.get('/articles', function(request, response) {
     );`
   ) // DONE: Referring to lines 45-52, answer the following questions:
     // What is a primary key?
-    // Put your response here...article_id
+    // Put your response here...article_id, the unique identifier in a table.
     // +++++++++++++++++++++
     // What does VARCHAR mean?
-    // Put your response here...it sets the maximum character for the title field
+    // Put your response here...a string data type that sets the maximum character for variable. CHAR sets constant number of the string.
     // +++++++++++++++++++++
   // REVIEW: This query will join the data together from our tables and send it back to the client.
   client.query(`
@@ -130,7 +130,7 @@ app.put('/articles/:id', function(request, response) {
 
   function queryTwo(author_id) {
     client.query(
-      // DONE: In a sentence or two, describe how a SQL 'UPDATE' is different from an 'INSERT', and identify which REST verbs and which CRUD components align with them. An update replaces existing fields, an INSERT inserts new data.
+      // DONE: In a sentence or two, describe how a SQL 'UPDATE' is different from an 'INSERT', and identify which REST verbs and which CRUD components align with them. An update replaces existing record, an INSERT inserts new data. REST verb are PUT/PATCH and CRUD=U, for update it's POST for INSERT and CRUD=C
       `UPDATE authors
       SET author=$1, "authorUrl"=$2
       WHERE author_id=$3;`, // DONE: Write a SQL query to update an existing author record
@@ -165,7 +165,7 @@ app.delete('/articles/:id', function(request, response) {
   client.query(
     `DELETE FROM articles WHERE article_id=$1;`,
     // DONE: What does the value in 'request.params.id' come from? If unsure, look in the Express docs.
-    // Put your response here...It comes from the user argument
+    // Put your response here...It comes from the user argument in AJAX
     [request.params.id]
   );
   // DONE: What number in the full-stack diagram best matches what is happening in line 171? #5
